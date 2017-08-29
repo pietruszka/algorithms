@@ -71,6 +71,30 @@ class List {
     end(){
         pos = listSize -1;
     };
+
+    prev(){
+        if(pos>0){
+            --pos;
+        }
+    };
+
+    next(){
+        if(pos<listSize-1){
+            ++pos;
+        }
+    };
+
+    currentPosition(){
+        return pos;
+    };
+
+    moveTo(position){
+        pos = position;
+    };
+
+    getElement(){
+        return dataStore[pos];
+    };
 }
 
 module.exports = List;
