@@ -15,7 +15,7 @@ class List {
     };
 
     insert(element, after){
-        let insertPos = this.find(after);
+        let insertPos = after;
         if(insertPos > -1){
             dataStore.splice(insertPos+1, 0, element);
             ++listSize;
@@ -42,13 +42,23 @@ class List {
 
     find(element){
         for(let i = 0; i < dataStore.length; i++){
-            if(this.dataStore[i] == elemement){
+            if(dataStore[i] == element){
                 return i;
             }
         }
         return -1;
     };
+    reclocate(from, to){
 
+        let itemFrom = dataStore[from];
+        console.log(itemFrom, dataStore);
+
+        this.remove(itemFrom);
+        console.log(itemFrom, dataStore);
+
+        this.insert(itemFrom,to)
+
+    };
     remove(element){
         let foundAt = this.find(element);
         if(foundAt > -1){
@@ -94,6 +104,9 @@ class List {
 
     getElement(){
         return dataStore[pos];
+    };
+    getAllElements(){
+        return dataStore;
     };
 }
 
