@@ -10,10 +10,11 @@ class List {
         dataStore = [];
     }
 
+    //Add new element to the end.
     append(element){
         dataStore[listSize++] = element;
     };
-
+    //Add new element after existing.
     insert(element, after){
         let insertPos = after;
         if(insertPos > -1){
@@ -24,13 +25,14 @@ class List {
         return false;
     };
 
+    //Delete all list elements.
     clear(){
         dataStore = [];
         listSize  = 0;
         pos = 0;
 
     };
-
+    //Check if element exists in the list. Return boolean.
     contain(element){
         for(let i = 0; i < dataStore.length; i++){
             if(dataStore[i] == element){
@@ -39,7 +41,7 @@ class List {
         }
         return false;
     };
-
+    //Find element in the list. Return index or -1.
     find(element){
         for(let i = 0; i < dataStore.length; i++){
             if(dataStore[i] == element){
@@ -59,6 +61,8 @@ class List {
         this.insert(itemFrom,to)
 
     };
+
+    //Splice array at found item's index. (at, howManyRemove, addItem) add before at
     remove(element){
         let foundAt = this.find(element);
         if(foundAt > -1){
