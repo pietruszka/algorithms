@@ -6,21 +6,41 @@ class Observer{
         handlers = [];
     };
 
-    subscribe(cb){
-        handlers.push(cb);
+    subscribe(observer){
+        handlers.push(observer);
     };
 
-    unsubscribe(cb){
+    unsubscribe(observer){
         handlers = handlers.filter(item=>{
-            if(item !== cb){
+            if(item !== observer){
                 return item;
             }
         });
     };
-    fire(o, thisObject){
-        let scope = thisObject || window;
-        handlers.forEach()
+    notify(){
+        for(let i=0; i<handlers.length; i++){
+            handlers[i].onUpdate();
+        }
     };
 };
+
+class ObserableObject extends Observer{
+    constructor(){
+        super();
+        this.subscribe(new Notif());
+        this.subscribe(new Notif());
+        this.subscribe(new Notif());
+
+        this.notify();
+    };
+
+};
+
+class Notif{
+    onUpdate(){
+        console.log('update!');
+    };
+};
+new ObserableObject();
 
 module.exports = Observer;
